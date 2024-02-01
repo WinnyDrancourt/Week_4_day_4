@@ -16,14 +16,14 @@ class DisplayMenus
     gets.chomp.to_i
   end
 
-  def init_game
-    puts "Hello, players, what are your names ?"
-    print "Player  o's name > "
-    name_o = gets.chomp
-    print "player x's name > "
-    name_x = gets.chomp
-    players = Player.new(name_o, name_x)
-  end
+  # def init_game
+  #   puts "Hello, players, what are your names ?"
+  #   print "Player  o's name > "
+  #   name_o = gets.chomp
+  #   print "player x's name > "
+  #   name_x = gets.chomp
+  #   players = Player.new(name_o, name_x)
+  # end
 
   def playing_game
     puts

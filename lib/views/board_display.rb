@@ -12,4 +12,18 @@ class DisplayBoard
     puts separator
   end
 
+  def over?(board)
+    counter = 0
+      board.each do |count|
+        if count == "X" || count == "O"
+          counter += 1
+        end
+      end
+    if counter == 9 #|| win?
+      return true
+    else
+      return false
+    end
+  end
+
 end
