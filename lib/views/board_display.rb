@@ -1,7 +1,7 @@
 class DisplayBoard
   attr_accessor :boardcases
 
-  def initialize
+  def initialize #creates an array of 9 cases representing the game board
     @boardcases = []
     9.times do
       boardcase = Boardcase.new(" ")
@@ -22,14 +22,14 @@ class DisplayBoard
     puts
   end
 
-  def over?(board)
+  def over?(board) #the over? method checks if the game is over
     counter = 0
       @boardcases.each do |count|
         if count.value == "X" || count.value == "O"
           counter += 1
         end
       end
-    if counter == 9 #|| win?
+    if counter == 9
       return true
     else
       return false

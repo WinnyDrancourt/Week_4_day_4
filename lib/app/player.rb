@@ -5,5 +5,5 @@ class Player
     @name = name
     @type = type
 	end
-
+# the player class defines the player's name + their type X or O 
 end
