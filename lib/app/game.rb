@@ -23,22 +23,30 @@ class Game
       when A1
       index = 0
       #board[index] = player symbol
-      when B1
+    when B1
       index = 1
-      when C1
+      #board[index] = player symbol
+    when C1
       index = 2
-      when A2
+      #board[index] = player symbol
+    when A2
       index = 3
-      when B2
+      #board[index] = player symbol
+    when B2
       index = 4
-      when C2
+      #board[index] = player symbol
+    when C2
       index = 5
-      when A3
+      #board[index] = player symbol
+    when A3
       index = 6
-      when B3
+      #board[index] = player symbol
+    when B3
       index = 7
-      when C3
+      #board[index] = player symbol
+    when C3
       index = 8
+      #board[index] = player symbol
     end
   end
 
@@ -49,6 +57,12 @@ class Game
         counter += 1
       end
     return counter
+  end
+
+  def turn
+    playing_game
+    user_input = gets.strip
+    #....
   end
 
   def win_condition # Define winning combinaison for compare
@@ -63,5 +77,6 @@ class Game
       [2, 4, 6] #diag right
     ]
   end
+
 
 end
