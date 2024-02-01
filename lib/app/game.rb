@@ -1,41 +1,5 @@
 class Game
 
-
-  def valid_move? # define if move puts by player is valid or not
-    if index.between?(0,8) && !position_taken?
-      return true
-    end
-  end
-
-  def move_to_index
-    index = 0
-    case playing_game
-      when A1
-        index = 0
-      when B1
-        index = 1
-      when C1
-        index = 2
-      when A2
-        index = 3
-      when B2
-        index = 4
-      when C2
-        index = 5
-      when A3
-        index = 6
-      when B3
-        index = 7
-      when C3
-        index = 8
-    end
-    return index
-  end
-
-  def index_to_board
-    board[index] = current_player
-  end
-
   def turn_count(board)
     counter = 0
     board.each do |count|
@@ -76,6 +40,7 @@ class Game
       [2, 4, 6] #diag right
     ]
   end
+  
   def win?
     win_condition.each do |condition|
       # Ici, on itère sur chaque condition de victoire définie dans win_condition
