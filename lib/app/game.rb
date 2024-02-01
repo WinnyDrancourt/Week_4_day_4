@@ -77,6 +77,21 @@ class Game
       [2, 4, 6] #diag right
     ]
   end
-
+  def win?
+    win_condition.each do |condition|
+      # Ici, on itère sur chaque condition de victoire définie dans win_condition
+      
+      positions = condition.map { |index| @board[index] }
+      # Création d'un tableau positions pour stocker les éléments du tableau de jeu (@board)
+      # correspondant à chaque index de la condition de victoire
+      
+      return true if positions.uniq.length == 1 && positions[0] != " "
+      # En utilisant uniq,je vérifie si les positions dans le tableau sont identiques
+      # et que la première position n'est pas une chaîne vide (" ").
+      # Si ces conditions sont remplies, la méthode retourne true, donc c'est la victoire.
+    end
+    # Si aucune des conditions de victoire n'est remplie, on retourne false.
+    false
+  end
 
 end
