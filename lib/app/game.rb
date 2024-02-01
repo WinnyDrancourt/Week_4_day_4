@@ -15,6 +15,9 @@ class Game
     board = ["0","1","2","3","4","5","6","7","8"]
   end
 
+  def player_move
+    board[index] = player_symbole
+
   def position_taken?
     if (board[index] == " ") || (board[index] == "") || (board[index] == nil)
       return false
@@ -24,7 +27,9 @@ class Game
   end
 
   def valid_move?
-
+    if index.between?(0,8) && !position_taken?
+      return true
+    end
   end
 
   def win_condition
