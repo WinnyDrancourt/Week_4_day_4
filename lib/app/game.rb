@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :players, :board, :menus
+  attr_accessor :players, :board, :boardcases
 
   def initialize
     create_players
@@ -28,48 +28,45 @@ class Game
     @board_d = DisplayBoard.new
   end
 
-  def board #board is an arrays of 9 elements with index
-    @board = ["0","1","2","3","4","5","6","7","8"]
-    return @board
-  end
-
   def move
     current_player = @players[@turn%2]
     puts "#{current_player.name} it's your turn !!!"
     puts "Make your choice between #{@choice} :"
     print "> "
     input = gets.strip.to_s.upcase
-    case input
-      when "A1"
-        index = 0
-      when "B1"
-        index = 1
-      when "C1"
-        index = 2
-      when "A2"
-        index = 3
-      when "B2"
-        index = 4
-      when "C2"
-        index = 5
-      when "A3"
-        index = 6
-      when "B3"
-        index = 7
-      when "C3"
-        index = 8
+    if @board_d.boardcases.index(input) != " " && @choice.include?(input)
+      @choice.delete(input)
+      case input
+        when "A1"
+          index = 0
+          @board_d.boardcases[index].value = current_player.type
+        when "B1"
+          index = 1
+          @board_d.boardcases[index].value = current_player.type
+        when "C1"
+          index = 2
+          @board_d.boardcases[index].value = current_player.type
+        when "A2"
+          index = 3
+          @board_d.boardcases[index].value = current_player.type
+        when "B2"
+          index = 4
+          @board_d.boardcases[index].value = current_player.type
+        when "C2"
+          index = 5
+          @board_d.boardcases[index].value = current_player.type
+        when "A3"
+          index = 6
+          @board_d.boardcases[index].value = current_player.type
+        when "B3"
+          index = 7
+          @board_d.boardcases[index].value = current_player.type
+        when "C3"
+          index = 8
+          @board_d.boardcases[index].value = current_player.type
+        end
+      end
     end
-  end
-
-  # def turn
-  #   move_to_index
-  #     if valid_move? == true
-  #         puts "Good move"
-  #         index_to_board
-  #       else "Wrong move, try again"
-  #     end
-  #   end
-  # end
 
   def win_condition # Define winning combinaison for compare
     win_condition = [
@@ -84,31 +81,30 @@ class Game
     ]
   end
 
-  # def win?
-  #   win_condition.each do |condition|
-  #     # Ici, on itère sur chaque condition de victoire définie dans win_condition
+  def win?
+    win_condition.each do |condition|
+      # Ici, on itère sur chaque condition de victoire définie dans win_condition
 
-  #     positions = condition.map { |index| @board[index] }
-  #     # Création d'un tableau positions pour stocker les éléments du tableau de jeu (@board)
-  #     # correspondant à chaque index de la condition de victoire
+      positions = condition.map { |index| @board_d.boardcases[index].value }
+      # Création d'un tableau positions pour stocker les éléments du tableau de jeu (@board)
+      # correspondant à chaque index de la condition de victoire
 
-  #     return true if positions.uniq.length == 1 && positions[0] != " "
-  #     # En utilisant uniq,je vérifie si les positions dans le tableau sont identiques
-  #     # et que la première position n'est pas une chaîne vide (" ").
-  #     # Si ces conditions sont remplies, la méthode retourne true, donc c'est la victoire.
-  #   end
-  #   # Si aucune des conditions de victoire n'est remplie, on retourne false.
-  #   false
-  # end
+      return true if positions.uniq.length == 1 && positions[0] != " "
+      # En utilisant uniq,je vérifie si les positions dans le tableau sont identiques
+      # et que la première position n'est pas une chaîne vide (" ").
+      # Si ces conditions sont remplies, la méthode retourne true, donc c'est la victoire.
+    end
+    # Si aucune des conditions de victoire n'est remplie, on retourne false.
+    false
+  end
 
   def perform
     player_name
-    @board_d.board_display(board)
-      until @board_d.over?(board)
-        @turn +=1
-        move
-
+    until @board_d.over?(board) || win?
+      @board_d.board_display(board)
+      move
+      system "clear"
+      @turn +=1
       end
   end
-
 end

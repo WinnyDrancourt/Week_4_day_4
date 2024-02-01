@@ -8,7 +8,21 @@ require 'views/menus'
 require 'app/player'
 require 'app/board'
 
-game = Game.new
-game.perform
-
-binding.pry
+def perform
+  display = DisplayMenus.new
+  display.welcome_menu
+  init = gets.chomp.to_i
+  if init == 1
+  game = Game.new
+  game.perform
+  finish = display.end_game
+    if finish == 1
+      perform
+    else
+      system ("quit")
+    end
+  else
+    system ("quit")
+  end
+end
+perform
