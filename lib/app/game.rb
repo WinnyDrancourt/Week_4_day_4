@@ -15,6 +15,8 @@ class Game
     board = ["0","1","2","3","4","5","6","7","8"]
   end
 
+  
+
   def position_taken?
     if (board[index] == " ") || (board[index] == "") || (board[index] == nil)
       return false
