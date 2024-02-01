@@ -15,7 +15,7 @@ class DisplayMenus
     puts "[1] Play game"
     puts "[2] Exit"
     puts "Choose your option :"
-    gets.chomp.to_i 
+    gets.chomp.to_i
   end
 
   def init_game
@@ -31,10 +31,10 @@ class DisplayMenus
     # définir le joueur qui doit jouer au prochain tour
     puts "Choose a case : A1, A2, A3, B1, B2, B3, C1, C2, C3 to place your symbol"
     gets.chomp
-      if valid_move? == true
-        puts "Good move"
-      else "Wrong move, try again"
-      end
+      # if valid_move? == true
+      #   puts "Good move"
+      # else "Wrong move, try again"
+      # end
   end
 
 

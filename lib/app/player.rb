@@ -1,4 +1,4 @@
-class PlayerCreation
+class Player
   attr_accessor :player_o, :player_x
 
 	def initialize(name_o, name_x)

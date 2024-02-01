@@ -1,7 +1,7 @@
 class Game
 
   def board #board is an arrays of 9 elements with index
-    board = ["0","1","2","3","4","5","6","7","8"]
+    board = [" "," "," "," "," "," "," "," "," "]
   end
 
   def position_taken? #define if position is taken or not
@@ -18,36 +18,33 @@ class Game
     end
   end
 
-  def user_move
+  def move_to_index
+    index = 0
     case playing_game
       when A1
-      index = 0
-      #board[index] = player symbol
-    when B1
-      index = 1
-      #board[index] = player symbol
-    when C1
-      index = 2
-      #board[index] = player symbol
-    when A2
-      index = 3
-      #board[index] = player symbol
-    when B2
-      index = 4
-      #board[index] = player symbol
-    when C2
-      index = 5
-      #board[index] = player symbol
-    when A3
-      index = 6
-      #board[index] = player symbol
-    when B3
-      index = 7
-      #board[index] = player symbol
-    when C3
-      index = 8
-      #board[index] = player symbol
+        index = 0
+      when B1
+        index = 1
+      when C1
+        index = 2
+      when A2
+        index = 3
+      when B2
+        index = 4
+      when C2
+        index = 5
+      when A3
+        index = 6
+      when B3
+        index = 7
+      when C3
+        index = 8
     end
+    return index
+  end
+
+  def index_to_board
+    board[index] = current_player
   end
 
   def turn_count(board)
@@ -59,10 +56,23 @@ class Game
     return counter
   end
 
+  def over?
+    if counter == 9 || win?
+      return true
+    else
+        return false
+    end
+  end
+
   def turn
-    playing_game
-    user_input = gets.strip
-    #....
+    until over?
+    move_to_index
+    if valid_move? == true
+        puts "Good move"
+        index_to_board
+      else "Wrong move, try again"
+    end
+
   end
 
   def win_condition # Define winning combinaison for compare
@@ -80,11 +90,11 @@ class Game
   def win?
     win_condition.each do |condition|
       # Ici, on itère sur chaque condition de victoire définie dans win_condition
-      
+
       positions = condition.map { |index| @board[index] }
       # Création d'un tableau positions pour stocker les éléments du tableau de jeu (@board)
       # correspondant à chaque index de la condition de victoire
-      
+
       return true if positions.uniq.length == 1 && positions[0] != " "
       # En utilisant uniq,je vérifie si les positions dans le tableau sont identiques
       # et que la première position n'est pas une chaîne vide (" ").
