@@ -1,7 +1,9 @@
 class Board
+  attr_accessor :playing_input
 
   def board #board is an arrays of 9 elements with index
     board = ["0","1","2","3","4","5","6","7","8"]
+    return board
   end
 
   def position_taken? #define if position is taken or not
@@ -17,10 +19,10 @@ class Board
       return true
     end
   end
-  
-  def move_to_index
+
+  def move_to_index(playing_input)
     index = 0
-    case playing_game
+    case playing_input
       when A1
         index = 0
       when B1
@@ -42,9 +44,9 @@ class Board
     end
     return index
   end
-  
+
   def index_to_board
     board[index] = current_player
   end
-    
+
 end
