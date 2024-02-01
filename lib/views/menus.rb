@@ -37,6 +37,8 @@ class DisplayMenus
       end
   end
 
+  def end_game
+    
 
 
 end
