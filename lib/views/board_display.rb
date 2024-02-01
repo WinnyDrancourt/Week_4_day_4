@@ -1,8 +1,5 @@
 class DisplayBoard
 
-  def init
-
-  end
   def board_display(board)
     puts
     puts ["XXXX""|"" A ""|"" B ""|"" C ""|"]
