@@ -16,11 +16,11 @@ def perform
   game = Game.new
   game.perform
   finish = display.end_game
-    if finish == 1
-      perform
-    else
-      system ("quit")
-    end
+      if finish == 1
+        perform
+      else
+        system ("quit")
+      end
   else
     system ("quit")
   end
