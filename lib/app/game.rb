@@ -30,7 +30,7 @@ class Game
 
   def move
     current_player = @players[@turn%2]
-    puts "#{current_player.name} it's your turn !!!"
+    puts "[#{current_player.type}]#{current_player.name} it's your turn !!!"
     puts "Make your choice between #{@choice} :"
     print "> "
     input = gets.strip.to_s.upcase
@@ -65,6 +65,7 @@ class Game
           index = 8
           @board_d.boardcases[index].value = current_player.type
         end
+        else move
       end
     end
 
